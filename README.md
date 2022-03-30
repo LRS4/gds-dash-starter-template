@@ -12,6 +12,7 @@ A starter template for building Dash visualization interfaces with the [GDS desi
 * Create a virtual environment using `python -m venv venv`
 * Activate the virtual environment using `venv/Scripts/activate`
 * Install packages using `python -m pip install -r requirements.txt`
+* Run the app using `python app.py`
 
 ## Installing new packages
 
