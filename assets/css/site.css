@@ -10124,3 +10124,62 @@ div.visual-vyed-box-content-leaf {
         float: left
     }
 }
+
+/* Form input styling */
+
+.DateRangePickerInput__withBorder {
+    font-family: "GDS Transport",Arial,sans-serif !important;
+    border: 2px solid #0b0c0c;
+}
+
+.CalendarDay__selected_span {
+    background-color: #1d70b8;
+    color: white;
+    border-color: black;
+}
+
+.CalendarDay__selected_span:hover {
+    background-color: #1d70b86b;
+    color: white;
+    border-color: black;
+}
+
+.Select-control {
+    font-family: "GDS Transport",Arial,sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px !important;
+    font-size: 1rem;
+    line-height: 1.25;
+    box-sizing: border-box;
+    max-width: 100%;
+    height: 40px;
+    height: 2.5rem;
+    padding: 5px;
+    border: 2px solid #0b0c0c;
+}
+
+.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
+    font-family: "GDS Transport",Arial,sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 20px !important;
+    font-size: 1rem;
+    line-height: 42px;
+    box-sizing: border-box;
+    max-width: 100%;
+    height: 40px;
+    height: 2.5rem;
+    padding: 5px;
+    margin-top: 10px;
+}
+	
+.is-focused:not(.is-open)>.Select-control,
+.is-open>.Select-control {
+    outline: 3px solid #fd0;
+    outline-offset: 0;
+    box-shadow: 0 0 0 4px #fd0;
+    border-color: black;
+}
