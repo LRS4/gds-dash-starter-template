@@ -7,7 +7,12 @@
 /* Layout helpers
 ----------------------------------*/
 body {
-    font-family: "GDS Transport"
+    font-family: "GDS Transport";
+    margin: 0px;
+}
+
+.govuk-main-wrapper {
+    margin: 0px 10px 0px 15px;
 }
 
 .ui-helper-hidden {
@@ -9832,4 +9837,33 @@ div.visual-vyed-box-content-leaf {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
+}
+
+.mobile-menu-button {
+    position: absolute !important;
+    right: -4px !important;
+    margin-right: 15px;
+    width: max-content !important;
+    top: 7px !important;
+    color: #fff !important;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid white !important;
+    box-shadow: unset !important;
+    padding: 0.2rem 0.5rem !important;
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile-menu-button {
+        display: inline-block;
+    }
+}
+
+#mobile-navigation {
+    width: 100%;
+}
+
+#mobile-navigation {
+    display: none;
+    position: sticky;
 }

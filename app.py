@@ -16,107 +16,134 @@ app.title = "GDS Dash Starter Template"
 
 app.layout = html.Div(
     children=[
-        html.Div(
-            html.H1(
-                children="Avocado Analytics",
-                className="govuk-heading-l"
-            ),
-            className="govuk-grid-column-one-quarter"
+        dcc.Markdown('''
+            <header role="banner" id="global-header" class="govuk-header govuk-!-padding-top-0" data-module="govuk-header" style="border-bottom:10px solid #1d70b8; margin-top: 0px;">
+                <div class="govuk-header__container">
+                    <div class="govuk-header__logo">
+                        <a href="/" class="govuk-header__link govuk-header__link--service-name govuk-!-margin-left-3 govuk-!-margin-bottom-0">
+                            Dash GDS starter template
+                        </a>
+                    </div>
+                    <button class="mobile-menu-button govuk-button" id="mobile-menu-btn">Menu ▼</button>
+                </div>
+            </header>
+        ''', dangerously_allow_html=True
         ),
         html.Div(
             children=[
-                html.H1(
-                    children="US Avocado Sales Summary",
-                    className="govuk-heading-l"
-                ),
-                html.P(
-                    children="Analyze the behavior of avocado prices"
-                    " and the number of avocados sold in the US"
-                    " between 2015 and 2018",
-                    className="govuk-body"
-                ),
-                html.Div(
-                    children=[
-                        html.Div(children="Region", className="menu-title"),
-                        dcc.Dropdown(
-                            id="region-filter",
-                            options=[
-                                {"label": region, "value": region}
-                                for region in np.sort(data.region.unique())
-                            ],
-                            value="Albany",
-                            clearable=False,
-                            className="dropdown",
-                        ),
-                    ]
-                ),
-                html.Div(
-                    children=[
-                        html.Div(children="Type", className="menu-title"),
-                        dcc.Dropdown(
-                            id="type-filter",
-                            options=[
-                                {"label": avocado_type, "value": avocado_type}
-                                for avocado_type in data.type.unique()
-                            ],
-                            value="organic",
-                            clearable=False,
-                            searchable=False,
-                            className="dropdown"
-                        ),
-                    ],
-                ),
                 html.Div(
                     children=[
                         html.Div(
-                            children="Date Range",
-                            className="menu-title"
+                            html.P(
+                                children="Last updated on Tuesday, 29 March 2022 at 4:00pm",
+                                className="govuk-body-s"
+                            ),
+                            className="govuk-grid-column-one-quarter"
                         ),
-                        dcc.DatePickerRange(
-                            id="date-range",
-                            min_date_allowed=data.Date.min().date(),
-                            max_date_allowed=data.Date.max().date(),
-                            start_date=data.Date.min().date(),
-                            end_date=data.Date.max().date(),
-                        ),
-                    ]
-                ),
-                dcc.Graph(
-                    id="price-chart",
-                    figure={
-                        "data": [
-                            {
-                                "x": data["Date"],
-                                "y": data["AveragePrice"],
-                                "type": "lines",
-                            },
-                        ],
-                        "layout": lh.get_chart_layout({
-                            "title": "Average Price of Avocados"
-                        })
-                    },
-                ),
-                dcc.Graph(
-                    id="volume-chart",
-                    figure={
-                        "data": [
-                            {
-                                "x": data["Date"],
-                                "y": data["Total Volume"],
-                                "type": "lines",
-                            },
-                        ],
-                        "layout": lh.get_chart_layout({
-                            "title": "Avocados Sold"
-                        }),
-                    }
+                        html.Div(
+                            children=[
+                                html.H1(
+                                    children="US Avocado Sales Summary",
+                                    className="govuk-heading-l"
+                                ),
+                                html.P(
+                                    children="Analyze the behavior of avocado prices"
+                                    " and the number of avocados sold in the US"
+                                    " between 2015 and 2018",
+                                    className="govuk-body"
+                                ),
+                                html.Div(
+                                    children=[
+                                        html.Div(children="Region",
+                                                 className="menu-title"),
+                                        dcc.Dropdown(
+                                            id="region-filter",
+                                            options=[
+                                                {"label": region, "value": region}
+                                                for region in np.sort(data.region.unique())
+                                            ],
+                                            value="Albany",
+                                            clearable=False,
+                                            className="dropdown",
+                                        ),
+                                    ]
+                                ),
+                                html.Div(
+                                    children=[
+                                        html.Div(children="Type",
+                                                 className="menu-title"),
+                                        dcc.Dropdown(
+                                            id="type-filter",
+                                            options=[
+                                                {"label": avocado_type,
+                                                 "value": avocado_type}
+                                                for avocado_type in data.type.unique()
+                                            ],
+                                            value="organic",
+                                            clearable=False,
+                                            searchable=False,
+                                            className="dropdown"
+                                        ),
+                                    ],
+                                ),
+                                html.Div(
+                                    children=[
+                                        html.Div(
+                                            children="Date Range",
+                                            className="menu-title"
+                                        ),
+                                        dcc.DatePickerRange(
+                                            id="date-range",
+                                            min_date_allowed=data.Date.min().date(),
+                                            max_date_allowed=data.Date.max().date(),
+                                            start_date=data.Date.min().date(),
+                                            end_date=data.Date.max().date(),
+                                        ),
+                                    ]
+                                ),
+                                dcc.Graph(
+                                    id="price-chart",
+                                    figure={
+                                        "data": [
+                                            {
+                                                "x": data["Date"],
+                                                "y": data["AveragePrice"],
+                                                "type": "lines",
+                                            },
+                                        ],
+                                        "layout": lh.get_chart_layout({
+                                            "title": "Average Price of Avocados"
+                                        })
+                                    },
+                                ),
+                                dcc.Graph(
+                                    id="volume-chart",
+                                    figure={
+                                        "data": [
+                                            {
+                                                "x": data["Date"],
+                                                "y": data["Total Volume"],
+                                                "type": "lines",
+                                            },
+                                        ],
+                                        "layout": lh.get_chart_layout({
+                                            "title": "Avocados Sold"
+                                        }),
+                                    }
+                                ),
+                            ],
+                            className="govuk-grid-column-three-quarters"
+                        )
+                    ],
+                    className="govuk-grid-row"
                 ),
             ],
-            className="govuk-grid-column-three-quarters"
+            className="govuk-main-wrapper"
         )
     ],
-    className="govuk-grid-row"
+    className="govuk-template__body"
 )
+
 
 @app.callback(
     [Output("price-chart", "figure"), Output("volume-chart", "figure")],
@@ -145,7 +172,7 @@ def update_charts(region, avocado_type, start_date, end_date):
             },
         ],
         "layout": lh.get_chart_layout({
-            "title": "Average Price of Avocados", 
+            "title": "Average Price of Avocados",
             "yaxis": {
                 "tickprefix": "$"
             },
@@ -167,6 +194,7 @@ def update_charts(region, avocado_type, start_date, end_date):
         })
     }
     return price_chart_figure, volume_chart_figure
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
