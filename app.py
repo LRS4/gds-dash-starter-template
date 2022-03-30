@@ -34,14 +34,71 @@ app.layout = html.Div(
                 html.Div(
                     children=[
                         html.Div(
-                            html.P(
-                                children="Last updated on Tuesday, 29 March 2022 at 4:00pm",
-                                className="govuk-body-s"
-                            ),
-                            className="govuk-grid-column-one-quarter"
+                            children=[
+                                html.Div(
+                                    children=[
+                                        html.Div(
+                                            children=[
+                                                html.Ul(
+                                                    children=[
+                                                        html.Li(
+                                                            children=[
+                                                                html.A(
+                                                                    children="Sales",
+                                                                    href="/",
+                                                                    className="govuk-link "
+                                                                )
+                                                            ],
+                                                            className="moj-side-navigation__item moj-side-navigation__item--active"
+                                                        ),
+                                                        html.Li(
+                                                            children=[
+                                                                html.A(
+                                                                    children="Trade",
+                                                                    href="/",
+                                                                    className="govuk-link "
+                                                                )
+                                                            ],
+                                                            className="moj-side-navigation__item moj-side-navigation"
+                                                        ),
+                                                        html.Li(
+                                                            children=[
+                                                                html.A(
+                                                                    children="Demand",
+                                                                    href="/",
+                                                                    className="govuk-link "
+                                                                )
+                                                            ],
+                                                            className="moj-side-navigation__item moj-side-navigation"
+                                                        ),
+                                                        html.Li(
+                                                            children=[
+                                                                html.A(
+                                                                    children="Forecast",
+                                                                    href="/",
+                                                                    className="govuk-link "
+                                                                )
+                                                            ],
+                                                            className="moj-side-navigation__item moj-side-navigation"
+                                                        )
+                                                    ],
+                                                    className="moj-side-navigation__list"
+                                                )
+                                            ],
+                                            className="moj-side-navigation govuk-!-padding-right-4"
+                                        )
+                                    ],
+                                    className="dashboard-menu"
+                                )
+                            ],
+                            className="govuk-grid-column-one-fifth"
                         ),
                         html.Div(
                             children=[
+                                html.P(
+                                    children="Last updated on Tuesday, 29 March 2022 at 4:00pm",
+                                    className="govuk-body-s"
+                                ),
                                 html.H1(
                                     children="US Avocado Sales Summary",
                                     className="govuk-heading-l"
@@ -132,7 +189,7 @@ app.layout = html.Div(
                                     }
                                 ),
                             ],
-                            className="govuk-grid-column-three-quarters"
+                            className="govuk-grid-column-four-fifths"
                         )
                     ],
                     className="govuk-grid-row"
