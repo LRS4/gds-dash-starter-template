@@ -1,6 +1,6 @@
 from copy import deepcopy
 
-def get_chart_layout(overrides: dict):
+def get_chart_layout(overrides: dict) -> dict:
   layout = dict(
       title="Placeholder",
       titlefont=dict(
