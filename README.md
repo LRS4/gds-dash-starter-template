@@ -22,3 +22,6 @@ A starter template for building Dash visualization interfaces with the [GDS desi
 ## References
 
 * [Dash tutorial](https://realpython.com/python-dash/)
+* [Approved colour pallete](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1060710/Research_reports_guidance_March_2022.pdf)
+* [Setting global styles for Plotly charts](https://community.plotly.com/t/setting-global-styles-for-plotly-charts/14213)
+* [Plotly layout reference](https://plotly.com/python/reference/layout/)

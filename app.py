@@ -2,6 +2,7 @@ import dash
 from dash import dcc
 from dash import html
 import pandas as pd
+from utils import layout_helpers as lh
 
 data = pd.read_csv("avocado.csv")
 data = data.query("type == 'conventional' and region == 'Albany'")
@@ -18,7 +19,7 @@ app.layout = html.Div(
                 children="Avocado Analytics",
                 className="govuk-heading-l"
             ),
-            className="govuk-grid-column-one-third"
+            className="govuk-grid-column-one-quarter"
         ),
         html.Div(
             children=[
@@ -41,7 +42,7 @@ app.layout = html.Div(
                                 "type": "lines",
                             },
                         ],
-                        "layout": {"title": "Average Price of Avocados"},
+                        "layout": lh.get_chart_layout(title="Average Price of Avocados")
                     },
                 ),
                 dcc.Graph(
@@ -53,11 +54,11 @@ app.layout = html.Div(
                                 "type": "lines",
                             },
                         ],
-                        "layout": {"title": "Avocados Sold"},
-                    },
+                        "layout": lh.get_chart_layout(title="Avocados Sold"),
+                    }
                 ),
             ],
-            className="govuk-grid-column-two-thirds"
+            className="govuk-grid-column-three-quarters"
         )
     ],
     className="govuk-grid-row"
