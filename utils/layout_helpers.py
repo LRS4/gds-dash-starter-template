@@ -14,10 +14,13 @@ def get_chart_layout(title: str):
           )
       ),
       xaxis=dict(
-          showgrid=False
+          showgrid=False,
+          fixedrange=True
       ),
       yaxis=dict(
-          showgrid=True
+          showgrid=True,
+          fixedrange=True,
+          tickprefix="$"
       )
   )
 
