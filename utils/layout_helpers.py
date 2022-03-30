@@ -1,8 +1,8 @@
 from copy import deepcopy
 
-def get_chart_layout(title: str):
+def get_chart_layout(overrides: dict):
   layout = dict(
-      title=title,
+      title="Placeholder",
       titlefont=dict(
           family="GDS Transport",
           size=19
@@ -14,14 +14,13 @@ def get_chart_layout(title: str):
           )
       ),
       xaxis=dict(
-          showgrid=False,
-          fixedrange=True
+          showgrid=False
       ),
       yaxis=dict(
-          showgrid=True,
-          fixedrange=True,
-          tickprefix="$"
+          showgrid=True
       )
   )
+
+  layout.update(overrides)
 
   return deepcopy(layout)

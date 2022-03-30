@@ -26,7 +26,7 @@ app.layout = html.Div(
         html.Div(
             children=[
                 html.H1(
-                    children="Avocado Analytics",
+                    children="US Avocado Sales Summary",
                     className="govuk-heading-l"
                 ),
                 html.P(
@@ -91,7 +91,9 @@ app.layout = html.Div(
                                 "type": "lines",
                             },
                         ],
-                        "layout": lh.get_chart_layout(title="Average Price of Avocados")
+                        "layout": lh.get_chart_layout({
+                            "title": "Average Price of Avocados"
+                        })
                     },
                 ),
                 dcc.Graph(
@@ -104,7 +106,9 @@ app.layout = html.Div(
                                 "type": "lines",
                             },
                         ],
-                        "layout": lh.get_chart_layout(title="Avocados Sold"),
+                        "layout": lh.get_chart_layout({
+                            "title": "Avocados Sold"
+                        }),
                     }
                 ),
             ],
@@ -140,7 +144,13 @@ def update_charts(region, avocado_type, start_date, end_date):
                 "hovertemplate": "$%{y:.2f}<extra></extra>",
             },
         ],
-        "layout": lh.get_chart_layout(title="Average Price of Avocados")
+        "layout": lh.get_chart_layout({
+            "title": "Average Price of Avocados", 
+            "yaxis": {
+                "tickprefix": "$"
+            },
+            "colorway": ["#104F75"]
+        })
     }
 
     volume_chart_figure = {
@@ -151,7 +161,10 @@ def update_charts(region, avocado_type, start_date, end_date):
                 "type": "lines",
             },
         ],
-        "layout": lh.get_chart_layout(title="Avocados Sold")
+        "layout": lh.get_chart_layout({
+            "title": "Avocados Sold",
+            "colorway": ["#104F75"],
+        })
     }
     return price_chart_figure, volume_chart_figure
 
