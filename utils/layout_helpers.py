@@ -18,7 +18,9 @@ def get_chart_layout(overrides: dict) -> dict:
       ),
       yaxis=dict(
           showgrid=True
-      )
+      ),
+      paper_bgcolor="white",
+      plot_bgcolor="white",
   )
 
   layout.update(overrides)
