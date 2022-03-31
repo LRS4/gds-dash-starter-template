@@ -128,7 +128,7 @@ app.layout = html.Div(
                                                             className="dropdown",
                                                         ),
                                                     ],
-                                                    className="govuk-grid-column-one-third"
+                                                    className="govuk-grid-column-one-quarter"
                                                 ),
                                                 html.Div(
                                                     children=[
@@ -149,7 +149,7 @@ app.layout = html.Div(
                                                             className="dropdown"
                                                         ),
                                                     ],
-                                                    className="govuk-grid-column-one-third"
+                                                    className="govuk-grid-column-one-quarter"
                                                 ),
                                                 html.Div(
                                                     children=[
@@ -166,7 +166,7 @@ app.layout = html.Div(
                                                             show_outside_days=False
                                                         )
                                                     ],
-                                                    className="govuk-grid-column-one-third"
+                                                    className="govuk-grid-column-one-quarter"
                                                 ),
                                             ],
                                             className="govuk-grid-row"
@@ -186,7 +186,7 @@ app.layout = html.Div(
                                         "layout": lh.get_chart_layout({
                                             "title": "Average Price of Avocados"
                                         })
-                                    },
+                                    }
                                 ),
                                 dcc.Graph(
                                     id="volume-chart",
