@@ -6,7 +6,7 @@ import pandas as pd
 from dash.dependencies import Output, Input
 from utils import layout_helpers as lh
 
-data = pd.read_csv("avocado.csv")
+data = pd.read_csv("data/avocado.csv")
 
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
