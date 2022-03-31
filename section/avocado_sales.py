@@ -89,7 +89,7 @@ layout = html.Div(
                                     show_outside_days=False
                                 )
                             ],
-                            className="govuk-grid-column-one-quarter"
+                            className="govuk-grid-column-one-half"
                         ),
                     ],
                     className="govuk-grid-row"
