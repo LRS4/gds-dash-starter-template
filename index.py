@@ -85,7 +85,7 @@ app.layout = html.Div(
                             children=[
                                 # Dynamic page content
                             ],
-                            className="govuk-grid-column-three-fifths"
+                            className="govuk-grid-column-four-fifths"
                         )
                     ],
                     className="govuk-grid-row"
