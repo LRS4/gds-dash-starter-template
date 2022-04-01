@@ -10,7 +10,7 @@ layout = html.Div(
         html.P(
             children="View headline figures for"
             " number of avocados sold in the US"
-            " between 2015 and 2018",
+            " between 2015 and 2018.",
             className="govuk-body"
         )
     ]
