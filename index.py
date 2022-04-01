@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 from dash.dependencies import Output, Input
 from utils import layout_helpers as lh
-from section import headlines, avocado_sales
+from section import headlines, avocado_sales, map
 
 from app import app
 from app import server
@@ -62,6 +62,17 @@ app.layout = html.Div(
                                                                 )
                                                             ],
                                                             className="moj-side-navigation__item"
+                                                        ),
+                                                        html.Li(
+                                                            id="map-nav-item",
+                                                            children=[
+                                                                dcc.Link(
+                                                                    children="Map",
+                                                                    href="/section/map",
+                                                                    className="govuk-link"
+                                                                )
+                                                            ],
+                                                            className="moj-side-navigation__item"
                                                         )
                                                     ],
                                                     className="moj-side-navigation__list"
@@ -110,6 +121,9 @@ def display_page(pathname):
     if pathname == "/section/avocado_sales":
         return avocado_sales.layout
 
+    if pathname == "/section/map":
+        return map.layout
+
     return headlines.layout
 
 
@@ -132,6 +146,18 @@ def update_active_nav_link(pathname):
 )
 def update_active_nav_link(pathname):
     if pathname == "/section/avocado_sales":
+        return "moj-side-navigation__item moj-side-navigation__item--active"
+    else:
+        return "moj-side-navigation__item moj-side-navigation"
+
+
+@app.callback(Output(component_id="map-nav-item", component_property="className"),
+              [
+    Input(component_id="url", component_property="pathname")
+],
+)
+def update_active_nav_link(pathname):
+    if pathname == "/section/map":
         return "moj-side-navigation__item moj-side-navigation__item--active"
     else:
         return "moj-side-navigation__item moj-side-navigation"
