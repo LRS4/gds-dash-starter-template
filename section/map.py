@@ -14,9 +14,9 @@ layout = html.Div(
             className="govuk-heading-l"
         ),
         html.P(
-            children="View headline figures for"
-            " number of avocados sold in the US"
-            " between 2015 and 2018",
+            children="View regional disparities for"
+            " number of avocados sold in the UK"
+            " between 2015 and 2018.",
             className="govuk-body"
         ),
         dl.Map(
