@@ -14,7 +14,7 @@ data = pd.read_csv(data_path.joinpath("avocado.csv"))
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
 
-app.title = "test"
+filtered_data = data.loc[((data.region == "Albany") & (data.type == "organic")), :]
 
 layout = html.Div(
     children=[
@@ -25,7 +25,7 @@ layout = html.Div(
         html.P(
             children="Analyze the behavior of avocado prices"
             " and the number of avocados sold in the US"
-            " between 2015 and 2018",
+            " between 2015 and 2018.",
             className="govuk-body"
         ),
         html.Div(
@@ -96,36 +96,54 @@ layout = html.Div(
                 )
             ]
         ),
-        dcc.Graph(
-            id="price-chart",
-            figure={
-                "data": [
-                    {
-                        "x": data["Date"],
-                        "y": data["AveragePrice"],
-                        "type": "lines",
-                    },
-                ],
-                "layout": lh.get_chart_layout({
-                    "title": "Average Price of Avocados"
-                })
-            }
+        dcc.Loading(
+            id="loading-spinner-1",
+            children=[
+                dcc.Graph(
+                    id="price-chart",
+                    figure={
+                        "data": [
+                            {
+                                "x": filtered_data["Date"],
+                                "y": filtered_data["AveragePrice"],
+                                "type": "lines",
+                                "hovertemplate": "$%{y:.2f}<extra></extra>",
+                            },
+                        ],
+                        "layout": lh.get_chart_layout({
+                            "title": "Average Price of Avocados",
+                            "yaxis": {
+                                "tickprefix": "$"
+                            },
+                            "colorway": ["#104F75"]
+                        })
+                    }
+                )
+            ],
+            type="circle",
         ),
-        dcc.Graph(
-            id="volume-chart",
-            figure={
-                "data": [
-                    {
-                        "x": data["Date"],
-                        "y": data["Total Volume"],
-                        "type": "lines",
-                    },
-                ],
-                "layout": lh.get_chart_layout({
-                    "title": "Avocados Sold"
-                }),
-            }
-        ),
+        dcc.Loading(
+            id="loading-spinner-2",
+            children=[
+                dcc.Graph(
+                    id="volume-chart",
+                    figure={
+                        "data": [
+                            {
+                                "x": filtered_data["Date"],
+                                "y": filtered_data["Total Volume"],
+                                "type": "lines",
+                            },
+                        ],
+                        "layout": lh.get_chart_layout({
+                            "title": "Avocados Sold",
+                            "colorway": ["#104F75"],
+                        })
+                    }
+                )
+            ],
+            type="circle"
+        )
     ]
 )
 
