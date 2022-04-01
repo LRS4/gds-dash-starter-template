@@ -19,7 +19,7 @@ app.title = "test"
 layout = html.Div(
     children=[
         html.H1(
-            children="Avocado sales summary",
+            children="Sales summary",
             className="govuk-heading-l"
         ),
         html.P(

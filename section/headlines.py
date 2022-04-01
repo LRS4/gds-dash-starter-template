@@ -4,7 +4,7 @@ from dash import html
 layout = html.Div(
     children=[
         html.H1(
-            children="Avocado headlines",
+            children="Headlines",
             className="govuk-heading-l"
         ),
         html.P(
