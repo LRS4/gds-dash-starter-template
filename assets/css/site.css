@@ -10043,7 +10043,6 @@ div.visual-vyed-box-content-leaf {
     border-color: #0b0c0c;
     border-left-color: transparent;
     background-color: #fd0;
-    box-shadow: 0 -2px #1d70b8, 0 4px #1d70b8;
     color: #0b0c0c
 }
 
@@ -10091,11 +10090,11 @@ div.visual-vyed-box-content-leaf {
     color: #1d70b8;
     font-weight: bold
 }
+
 .moj-side-navigation__item--active a:focus {
     border-color: #0b0c0c;
     border-left-color: transparent;
     background-color: #fd0;
-    box-shadow: 0 -2px #1d70b8, 0 4px #1d70b8;
     color: #0b0c0c
 }
 
