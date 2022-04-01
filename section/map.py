@@ -1,33 +1,16 @@
 from dash import dcc
 from dash import html
+import dash_leaflet as dl
 from app import app
 from dash.dependencies import Output, Input
-import plotly.express as px
 
-df = px.data.election()  # replace with your own data source
-geojson = px.data.election_geojson()
-
-fig = px.choropleth_mapbox(
-    df,
-    geojson=geojson,
-    color="Coderre",
-    locations="district",
-    featureidkey="properties.district",
-    center={"lat": 45.5517, "lon": -73.7073},
-    zoom=10,
-    range_color=[0, 6500],
-    height=700
-)
-
-fig.update_layout(
-    margin={"r": 0, "t": 0, "l": 0, "b": 0},
-    mapbox_style="carto-positron"
-)
+url = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
 
 layout = html.Div(
     children=[
         html.H1(
-            children="Avocado headlines",
+            children="Map",
             className="govuk-heading-l"
         ),
         html.P(
@@ -36,39 +19,16 @@ layout = html.Div(
             " between 2015 and 2018",
             className="govuk-body"
         ),
-        dcc.RadioItems(
-            id='candidate',
-            options=["Joly", "Coderre", "Bergeron"],
-            value="Coderre",
-            inline=True
-        ),
-        dcc.Graph(id="map", figure=fig)
+        dl.Map(
+            dl.TileLayer(
+                url=url,
+                attribution=attribution,
+                maxZoom=10,
+                minZoom=6
+            ), 
+            zoom=6,
+            center=[54.509865, -5.118092],
+            style={'width': '99%', 'height': '80vh'}
+        )
     ]
 )
-
-
-@app.callback(
-    Output("map", "figure"),
-    Input("candidate", "value"))
-def display_choropleth(candidate):
-    df = px.data.election()  # replace with your own data source
-    geojson = px.data.election_geojson()
-
-    fig = px.choropleth_mapbox(
-        df, 
-        geojson=geojson, 
-        color=candidate,
-        locations="district", 
-        featureidkey="properties.district",
-        center={"lat": 45.5517, "lon": -73.7073}, 
-        zoom=10,
-        range_color=[0, 6500],
-        height=700
-    )
-
-    fig.update_layout(
-        margin={"r": 0, "t": 0, "l": 0, "b": 0},
-        mapbox_style="carto-positron"
-    )
-
-    return fig
