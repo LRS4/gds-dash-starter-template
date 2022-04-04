@@ -61,7 +61,7 @@ geojson = dl.GeoJSON(
     options=dict(style=style_handle),  # how to style each polygon
     zoomToBounds=True,  # when true, zooms to bounds when data changes (e.g. on load)
     zoomToBoundsOnClick=True,  # when true, zooms to bounds of feature (e.g. polygon) on click
-    hoverStyle=arrow_function(dict(weight=5, color='#666', dashArray='')),  # style applied on hover
+    hoverStyle=arrow_function(dict(weight=3, color='black', dashArray='')),  # style applied on hover
     hideout=dict(colorscale=colorscale, classes=classes, style=style, colorProp="density"),
     id="geojson"
 )
