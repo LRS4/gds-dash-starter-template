@@ -19,8 +19,8 @@ def get_info(feature=None):
         "{:.3f} avocados sold".format(feature["properties"]["density"])
     ]
 
-classes = [0, 5000, 10000, 20000, 30000, 40000, 45000, 50000]
-colorscale = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026']
+classes = [0, 10000, 20000, 30000, 40000, 50000]
+colorscale = ['#cfdce3', '#9fb9c8', '#7095ac', '#407291', '#104f75']
 style = dict(
     weight=2, 
     opacity=1, 
