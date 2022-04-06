@@ -93,6 +93,7 @@ layout = html.Div(
                     maxZoom=10,
                     minZoom=6
                 ), 
+                dl.FullscreenControl(),
                 geojson, 
                 colorbar, 
                 info
