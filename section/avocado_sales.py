@@ -4,6 +4,8 @@ from app import app
 import numpy as np
 import pandas as pd
 from dash.dependencies import Output, Input
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 from utils import layout_helpers as lh
 import pathlib
 
@@ -13,6 +15,7 @@ data = pd.read_csv(data_path.joinpath("avocado.csv"))
 
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
+data["YOYRollingAveragePrice"] = data["AveragePrice"].rolling(360, min_periods=1).mean()
 
 filtered_data = data.loc[((data.region == "Albany") & (data.type == "organic")), :]
 
@@ -133,7 +136,7 @@ layout = html.Div(
                                 "x": filtered_data["Date"],
                                 "y": filtered_data["Total Volume"],
                                 "type": "lines",
-                            },
+                            }
                         ],
                         "layout": lh.get_chart_layout({
                             "title": "Avocados Sold",
@@ -164,23 +167,38 @@ def update_charts(region, avocado_type, start_date, end_date):
         & (data.Date <= end_date)
     )
     filtered_data = data.loc[mask, :]
-    price_chart_figure = {
-        "data": [
-            {
-                "x": filtered_data["Date"],
-                "y": filtered_data["AveragePrice"],
-                "type": "lines",
-                "hovertemplate": "$%{y:.2f}<extra></extra>",
-            },
-        ],
-        "layout": lh.get_chart_layout({
-            "title": "Average Price of Avocados",
-            "yaxis": {
-                "tickprefix": "$"
-            },
-            "colorway": ["#104F75"]
-        })
-    }
+
+    price_chart_figure = make_subplots(specs=[[{"secondary_y": True}]])
+
+    price_chart_figure.add_trace(
+        go.Scatter(
+            x=filtered_data["Date"], 
+            y=filtered_data["AveragePrice"], 
+            name="Price"
+        ), 
+        secondary_y=False,
+    )
+
+    price_chart_figure.add_trace(
+        go.Scatter(
+            x=filtered_data["Date"], 
+            y=filtered_data["YOYRollingAveragePrice"], 
+            name="YOY Rolling Average",
+            line={
+                "dash": "dot"
+            }
+        ), 
+        secondary_y=False,
+    )
+
+    price_chart_figure.layout = lh.get_chart_layout({
+        "title": "Average Price of Avocados",
+        "title_x": 0.5,
+        "yaxis": {
+            "tickprefix": "$"
+        },
+        "colorway": ["#104F75", "#e87d1e"]
+    })
 
     volume_chart_figure = {
         "data": [
