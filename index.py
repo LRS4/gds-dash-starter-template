@@ -84,7 +84,7 @@ app.layout = html.Div(
                                     className="dashboard-menu"
                                 )
                             ],
-                            className="govuk-grid-column-one-fifth"
+                            className="dashboard-menu"
                         ),
                         dcc.Location(
                             id="url",
@@ -96,10 +96,10 @@ app.layout = html.Div(
                             children=[
                                 # Dynamic page content
                             ],
-                            className="govuk-grid-column-four-fifths"
+                            className=""
                         )
                     ],
-                    className="govuk-grid-row"
+                    className="dashboard-container"
                 ),
             ],
             className="govuk-main-wrapper"

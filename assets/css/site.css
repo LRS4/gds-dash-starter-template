@@ -9883,6 +9883,12 @@ div.visual-vyed-box-content-leaf {
     width: 200px;
 }
 
+@media (max-width: 40em) {
+    .dashboard-menu {
+        display: none;
+    }
+}
+
 .govuk-\!-padding-top-1,
 .moj-side-navigation__item.mobile > a,
 .stand-alone-metric {
@@ -10107,7 +10113,7 @@ div.visual-vyed-box-content-leaf {
 }
 @media(min-width:49.9375em) {
     .govuk-grid-column-one-fifth {
-        width: 15%;
+        width: 10%;
         float: left
     }
 }
@@ -10181,4 +10187,11 @@ div.visual-vyed-box-content-leaf {
     outline-offset: 0;
     box-shadow: 0 0 0 4px #fd0;
     border-color: black;
+}
+
+/* Dashboard flex container */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row
 }
