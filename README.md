@@ -41,7 +41,8 @@ The choropleth in the starter template map tab is an adapted version of the [das
 
 ## References
 
-* [Dash tutorial](https://realpython.com/python-dash/)
+* [Dash tutorial for single page app](https://realpython.com/python-dash/)
+* [Dash tutorial for multi page app](https://www.youtube.com/watch?v=RMBSQ6leon)
 * [Approved colour pallete](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1060710/Research_reports_guidance_March_2022.pdf)
 * [Setting global styles for Plotly charts](https://community.plotly.com/t/setting-global-styles-for-plotly-charts/14213)
 * [Stylesheet reference](https://coronavirus.data.gov.uk/public/assets/summary/css/application.css)
