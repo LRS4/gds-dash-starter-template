@@ -10201,7 +10201,7 @@ div.visual-vyed-box-content-leaf {
 }
 
 .card-container {
-    padding: 10px;
+    padding: 7px;
     background-color: #F8F8F8;
 }
 
@@ -10214,9 +10214,12 @@ div.visual-vyed-box-content-leaf {
     padding: 0 !important;
     width: max-content !important;
     z-index: unset !important;
-    border-bottom: 1px dashed #000;
     color: #000 !important;
     cursor: help;
+}
+
+.tooltip-dashed {
+    border-bottom: 1px dashed #000;
 }
 
 .tooltip .tooltiptext {
@@ -10246,4 +10249,14 @@ div.visual-vyed-box-content-leaf {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.change-box.good {
+    background: #cce2d8;
+    color: #005a30;
+}
+
+.change-box.bad {
+    background: #f6d7d2;
+    color: #942514;
 }
