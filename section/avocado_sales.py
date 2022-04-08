@@ -207,10 +207,10 @@ def update_charts(region, avocado_type, start_date, end_date):
         "colorway": ["#104F75", "#e87d1e"],
         "legend": {
             "orientation": "h",
-            "yanchor": "bottom",
-            "y": 1.02,
-            "xanchor": "right",
-            "x": 1
+            "xanchor": "center",
+            "yanchor": "top",
+            "y": -0.3, 
+            "x": 0.5
         }
     })
 
