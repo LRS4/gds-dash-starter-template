@@ -15,7 +15,8 @@ data = pd.read_csv(data_path.joinpath("avocado.csv"))
 
 data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 data.sort_values("Date", inplace=True)
-data["YOYRollingAveragePrice"] = data["AveragePrice"].rolling(360, min_periods=1).mean()
+data.set_index("Date", inplace=True)
+data["YearRollingAveragePrice"] = data["AveragePrice"].rolling(window=365, min_periods=1).mean()
 
 filtered_data = data.loc[((data.region == "Albany") & (data.type == "organic")), :]
 
@@ -85,10 +86,10 @@ layout = html.Div(
                                 ),
                                 dcc.DatePickerRange(
                                     id="date-range",
-                                    min_date_allowed=data.Date.min().date(),
-                                    max_date_allowed=data.Date.max().date(),
-                                    start_date=data.Date.min().date(),
-                                    end_date=data.Date.max().date(),
+                                    min_date_allowed=data.index.min().date(),
+                                    max_date_allowed=data.index.max().date(),
+                                    start_date=data.index.min().date(),
+                                    end_date=data.index.max().date(),
                                     show_outside_days=False
                                 )
                             ],
@@ -107,7 +108,7 @@ layout = html.Div(
                     figure={
                         "data": [
                             {
-                                "x": filtered_data["Date"],
+                                "x": filtered_data.index,
                                 "y": filtered_data["AveragePrice"],
                                 "type": "lines",
                                 "hovertemplate": "$%{y:.2f}<extra></extra>",
@@ -133,7 +134,7 @@ layout = html.Div(
                     figure={
                         "data": [
                             {
-                                "x": filtered_data["Date"],
+                                "x": filtered_data.index,
                                 "y": filtered_data["Total Volume"],
                                 "type": "lines",
                             }
@@ -163,8 +164,8 @@ def update_charts(region, avocado_type, start_date, end_date):
     mask = (
         (data.region == region)
         & (data.type == avocado_type)
-        & (data.Date >= start_date)
-        & (data.Date <= end_date)
+        & (data.index >= start_date)
+        & (data.index <= end_date)
     )
     filtered_data = data.loc[mask, :]
 
@@ -172,7 +173,7 @@ def update_charts(region, avocado_type, start_date, end_date):
 
     price_chart_figure.add_trace(
         go.Scatter(
-            x=filtered_data["Date"], 
+            x=filtered_data.index, 
             y=filtered_data["AveragePrice"], 
             name="Price"
         ), 
@@ -181,11 +182,11 @@ def update_charts(region, avocado_type, start_date, end_date):
 
     price_chart_figure.add_trace(
         go.Scatter(
-            x=filtered_data["Date"], 
-            y=filtered_data["YOYRollingAveragePrice"], 
-            name="YOY Rolling Average",
+            x=filtered_data.index, 
+            y=filtered_data["YearRollingAveragePrice"], 
+            name="Year Rolling Average",
             line={
-                "dash": "dot"
+                "dash": "solid"
             }
         ), 
         secondary_y=False,
@@ -203,7 +204,7 @@ def update_charts(region, avocado_type, start_date, end_date):
     volume_chart_figure = {
         "data": [
             {
-                "x": filtered_data["Date"],
+                "x": filtered_data.index,
                 "y": filtered_data["Total Volume"],
                 "type": "lines",
             },
