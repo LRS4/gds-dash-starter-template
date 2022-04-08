@@ -53,6 +53,8 @@ layout = html.Div(
                                     searchable=True,
                                     clearable=False,
                                     className="dropdown",
+                                    persistence=True,
+                                    persistence_type="session"
                                 ),
                             ],
                             className="govuk-grid-column-one-quarter"
@@ -73,7 +75,9 @@ layout = html.Div(
                                     value="organic",
                                     clearable=False,
                                     searchable=False,
-                                    className="dropdown"
+                                    className="dropdown",
+                                    persistence=True,
+                                    persistence_type="session"
                                 ),
                             ],
                             className="govuk-grid-column-one-quarter"
@@ -90,7 +94,9 @@ layout = html.Div(
                                     max_date_allowed=data.index.max().date(),
                                     start_date=data.index.min().date(),
                                     end_date=data.index.max().date(),
-                                    show_outside_days=False
+                                    show_outside_days=False,
+                                    persistence=True,
+                                    persistence_type="session"
                                 )
                             ],
                             className="govuk-grid-column-one-half"
