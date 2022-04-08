@@ -10189,7 +10189,7 @@ div.visual-vyed-box-content-leaf {
     border-color: black;
 }
 
-/* Dashboard flex container */
+/* Dashboard containers */
 
 .dashboard-container {
     display: flex;
@@ -10198,4 +10198,52 @@ div.visual-vyed-box-content-leaf {
 
 #page-content {
     width: 100%;
+}
+
+.card-container {
+    padding: 10px;
+    background-color: #F8F8F8;
+}
+
+/* Tooltips */
+
+.tooltip {
+    font-weight: normal;
+    position: relative;
+    display: inline-block;
+    padding: 0 !important;
+    width: max-content !important;
+    z-index: unset !important;
+    border-bottom: 1px dashed #000;
+    color: #000 !important;
+    cursor: help;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    margin-left: 5px;
+    color: #fff;
+    text-align: left;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    position: absolute;
+    z-index: 1
+}
+
+.tooltip .tooltiptext {
+    font-weight: normal;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+    /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
