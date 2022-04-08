@@ -10195,3 +10195,7 @@ div.visual-vyed-box-content-leaf {
     display: flex;
     flex-direction: row
 }
+
+#page-content {
+    width: 100%;
+}
