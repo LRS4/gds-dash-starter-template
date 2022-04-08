@@ -204,7 +204,14 @@ def update_charts(region, avocado_type, start_date, end_date):
         "yaxis": {
             "tickprefix": "$"
         },
-        "colorway": ["#104F75", "#e87d1e"]
+        "colorway": ["#104F75", "#e87d1e"],
+        "legend": {
+            "orientation": "h",
+            "yanchor": "bottom",
+            "y": 1.02,
+            "xanchor": "right",
+            "x": 1
+        }
     })
 
     volume_chart_figure = {
@@ -217,7 +224,7 @@ def update_charts(region, avocado_type, start_date, end_date):
         ],
         "layout": lh.get_chart_layout({
             "title": "Avocados Sold",
-            "colorway": ["#104F75"],
+            "colorway": ["#104F75"]
         })
     }
 
