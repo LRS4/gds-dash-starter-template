@@ -20,25 +20,25 @@ data_excluding_big_regions = \
 
 top_sales_region = data_excluding_big_regions[["region", "Total Volume"]] \
     .groupby("region") \
-    .max() \
+    .sum() \
     .sort_values(by="Total Volume") \
     .tail(1)
 
 bottom_sales_region = data_excluding_big_regions[["region", "Total Volume"]] \
     .groupby("region") \
-    .max() \
+    .sum() \
     .sort_values(by="Total Volume") \
     .head(1)
 
 top_sales_type = data_excluding_big_regions[["type", "Total Volume"]] \
     .groupby("type") \
-    .max() \
+    .sum() \
     .sort_values(by="Total Volume") \
     .tail(1)
 
 bottom_sales_type = data_excluding_big_regions[["type", "Total Volume"]] \
     .groupby("type") \
-    .max() \
+    .sum() \
     .sort_values(by="Total Volume") \
     .head(1)
 
@@ -93,7 +93,7 @@ layout = html.Div(
                             change_tag_label="+32.4%",
                             change_tag_type="bad",
                             change_tag_arrow_direction="increase",
-                            change_tag_tooltip_text="Change from previous year"
+                            change_tag_tooltip_text="Change from previous year (dummy figure)"
                         )
                     ],
                     className="govuk-grid-column-one-third",
@@ -109,7 +109,7 @@ layout = html.Div(
                             change_tag_label="+32.4%",
                             change_tag_type="good",
                             change_tag_arrow_direction="increase",
-                            change_tag_tooltip_text="Change from previous return"
+                            change_tag_tooltip_text="Change from previous year (dummy figure)"
                         )
                     ],
                     className="govuk-grid-column-one-third"
